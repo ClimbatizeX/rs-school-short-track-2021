@@ -14,8 +14,27 @@
  *
  * The result should be 9
  */
-function getMatrixElementsSum(/* matrix */) {
-  throw new Error('Not implemented');
+function getMatrixElementsSum(matrix) {
+  for (let i = matrix.length - 1; i >= 0; i--) {
+    const actualMatrix = matrix[i];
+    for (let j = 0; j < actualMatrix.length; j++) {
+      if (actualMatrix[j] === 0) {
+        for (let y = matrix.length - 1; y > i; y--) {
+          // eslint-disable-next-line no-param-reassign
+          matrix[y][j] = 0;
+        }
+      }
+    }
+  }
+  return matrix.reduce(
+    (result, subArray) => result + subArray.reduce(
+      (accum, element) => accum + element,
+      // eslint-disable-next-line comma-dangle
+      0
+    ),
+    // eslint-disable-next-line comma-dangle
+    0
+  );
 }
 
 module.exports = getMatrixElementsSum;
