@@ -29,11 +29,9 @@ function getMatrixElementsSum(matrix) {
   return matrix.reduce(
     (result, subArray) => result + subArray.reduce(
       (accum, element) => accum + element,
-      // eslint-disable-next-line comma-dangle
-      0
+      0,
     ),
-    // eslint-disable-next-line comma-dangle
-    0
+    0,
   );
 }
 
